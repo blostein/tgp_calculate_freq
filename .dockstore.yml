@@ -1,0 +1,4 @@
+version: 1.2
+  - subclass: WDL
+    primaryDescriptorPath: /tgp_calculate_within_frqs.wdl
+    name: tgp_calculate_within_frqs
