@@ -27,6 +27,7 @@ workflow TGP_getFreqs{
             pvar_file = source_pvar_file,
             psam_file = source_psam_file,
             superpop_file = source_superpop_file
+            relatives_exclude = relatives_exclude
     }
 
     if(defined(target_gcp_folder)){
