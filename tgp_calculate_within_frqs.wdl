@@ -63,6 +63,7 @@ task CalculateFreq{
         plink2 --pgen ~{pgen_file} \
             --pvar ~{pvar_file} \
             --psam ~{psam_file} \
+            --allow-extra-chr \
             --rm-dup 'exclude-all' \
             --make-bed \
             --out tgp_nodup  
