@@ -67,7 +67,7 @@ task CalculateFreq{
             --allow-extra-chr \
             --set-all-var-ids @:#:\$r:\$a \
             --new-id-max-allele-len 10 truncate \
-            --max-aleleles 2 \
+            --max-alleles 2 \
             --rm-dup 'exclude-all' \
             --make-bed \
             --out tgp_nodup  
