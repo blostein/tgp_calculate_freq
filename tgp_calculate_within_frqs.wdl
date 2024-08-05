@@ -60,10 +60,14 @@ task CalculateFreq{
     Int disk_size = ceil(size([pgen_file, psam_file, pvar_file], "GB")  * 2) + 20
 
     command <<<
+        # take the TGP data, remove duplicates, restrict to biallelic SNPs (necessary since cannot calculate frq within in plink2 in the same way as in plink1), and calculate within super populations 
         plink2 --pgen ~{pgen_file} \
             --pvar ~{pvar_file} \
             --psam ~{psam_file} \
             --allow-extra-chr \
+            --set-all-var-ids @:#:\$r:\$a \
+            --new-id-max-allele-len 10 truncate \
+            --max-aleleles 2 \
             --rm-dup 'exclude-all' \
             --make-bed \
             --out tgp_nodup  
