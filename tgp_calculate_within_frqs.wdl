@@ -14,7 +14,8 @@ workflow TGP_getFreqs{
         File source_pvar_file
         File source_psam_file
 
-        File source_superpop_file        
+        File source_superpop_file   
+        File relatives_exclude     
         
         String? project_id
         String? target_gcp_folder
@@ -52,6 +53,7 @@ task CalculateFreq{
         File pvar_file
         File psam_file
         File superpop_file
+        File relatives_exclude
 
         Int memory_gb = 20
         String docker = "hkim298/plink_1.9_2.0:20230116_20230707"
@@ -69,6 +71,7 @@ task CalculateFreq{
             --new-id-max-allele-len 10 truncate \
             --max-alleles 2 \
             --rm-dup 'exclude-all' \
+            --remove ~{relatives_exclude} \
             --make-bed \
             --out tgp_nodup  
 
