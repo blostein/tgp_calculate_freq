@@ -60,7 +60,7 @@ task CalculateFreq{
         String docker = "hkim298/plink_1.9_2.0:20230116_20230707"
     }
 
-    Int disk_size = ceil(size([pgen_file, psam_file, pvar_file], "GB")  * 2) + 20
+    Int disk_size = ceil(size([pgen_file, psam_file, pvar_file], "GB")  * 4) + 20
 
     command <<<
         # take the TGP data, remove duplicates, restrict to biallelic SNPs (necessary since cannot calculate frq within in plink2 in the same way as in plink1), and calculate within super populations 
