@@ -68,6 +68,7 @@ task CalculateFreq{
             --pvar ~{pvar_file} \
             --psam ~{psam_file} \
             --allow-extra-chr \
+            --chr 1-22, X, Y \
             --set-all-var-ids @:#:\$r:\$a \
             --new-id-max-allele-len 10 truncate \
             --max-alleles 2 \
@@ -77,6 +78,7 @@ task CalculateFreq{
             --out tgp_nodup  
 
         plink --bfile tgp_nodup \
+            --allow-extra-chr \
             --freq --within ~{superpop_file} \
             --out tgp_within_superpop_freqs
     >>>
