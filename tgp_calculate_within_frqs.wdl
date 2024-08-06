@@ -56,6 +56,8 @@ task CalculateFreq{
         File superpop_file
         File relatives_exclude
 
+        String? plink2_maf_filter = "--maf 0.001"
+
         Int memory_gb = 20
         String docker = "hkim298/plink_1.9_2.0:20230116_20230707"
     }
@@ -64,6 +66,7 @@ task CalculateFreq{
 
     command <<<
         # take the TGP data, remove duplicates, restrict to biallelic SNPs (necessary since cannot calculate frq within in plink2 in the same way as in plink1), and calculate within super populations 
+        # include a MAF filter (default 0.001) to reduce size of output file
         plink2 --pgen ~{pgen_file} \
             --pvar ~{pvar_file} \
             --psam ~{psam_file} \
@@ -72,6 +75,7 @@ task CalculateFreq{
             --set-all-var-ids @:#:\$r:\$a \
             --new-id-max-allele-len 10 truncate \
             --max-alleles 2 \
+            ~{plink2_maf_filter} \
             --rm-dup 'exclude-all' \
             --remove ~{relatives_exclude} \
             --double-id \
