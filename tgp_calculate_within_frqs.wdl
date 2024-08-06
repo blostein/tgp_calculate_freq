@@ -78,7 +78,6 @@ task CalculateFreq{
             ~{plink2_maf_filter} \
             --rm-dup 'exclude-all' \
             --remove ~{relatives_exclude} \
-            --double-id \
             --make-bed \
             --out tgp_nodup  
 
