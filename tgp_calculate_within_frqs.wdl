@@ -74,6 +74,7 @@ task CalculateFreq{
             --max-alleles 2 \
             --rm-dup 'exclude-all' \
             --remove ~{relatives_exclude} \
+            --double-id \
             --make-bed \
             --out tgp_nodup  
 
