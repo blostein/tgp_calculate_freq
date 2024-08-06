@@ -95,6 +95,6 @@ task CalculateFreq{
     }
 
     output{
-        File freq_file = "tgp_within_superpop_freqs.frq"
+        File freq_file = "tgp_within_superpop_freqs.frq.strat"
     }
 }
